@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Helpers\Helper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\Service\TodoService::class,
             \App\Services\TodoService::class
         );
+
+        // シングルトンパターンを参照してね
+        $this->app->singleton('app-helper', Helper::class);
     }
 }
